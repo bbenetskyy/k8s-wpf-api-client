@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="k8s_wpf_api_client.MainWindow"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+        x:Class="k8s_wpf_api_client.MainWindow"
+        xmlns:vm="clr-namespace:k8s_wpf_api_client.ViewModels;assembly=ApiViewModel"
         Title="K8s WPF API Client" Height="266.789" Width="566.874" WindowStartupLocation="CenterScreen" Icon="ip.ico" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,10 +19,12 @@
                 <dxe:TextEdit x:Name="Ip" 
                               Width="95"
                               Margin="10"
+                              Text="{Binding TxtIpm, Source=vm, Mode=TwoWay}"
                               NullText="Minikube IP" Mask="\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}" MaskType="RegEx" MaskIgnoreBlank="True"/>
                 <dxe:TextEdit x:Name="Port"
                               Width="55" 
                               Margin="10"
+                              Text="{Binding TxtPort, Source=vm, Mode=TwoWay}"
                               NullText="Port" Mask="99999" MaskType="Simple" MaskIgnoreBlank="True"/>
             </StackPanel>
             <StackPanel
