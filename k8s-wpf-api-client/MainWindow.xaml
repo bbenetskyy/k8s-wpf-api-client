@@ -19,12 +19,12 @@
                 <dxe:TextEdit x:Name="Ip" 
                               Width="95"
                               Margin="10"
-                              Text="{Binding TxtIpm, Source=vm, Mode=TwoWay}"
+                              Text="{Binding Ip, Mode=TwoWay}"
                               NullText="Minikube IP" Mask="\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}" MaskType="RegEx" MaskIgnoreBlank="True"/>
                 <dxe:TextEdit x:Name="Port"
                               Width="55" 
                               Margin="10"
-                              Text="{Binding TxtPort, Source=vm, Mode=TwoWay}"
+                              Text="{Binding Port, Mode=TwoWay}"
                               NullText="Port" Mask="99999" MaskType="Simple" MaskIgnoreBlank="True"/>
             </StackPanel>
             <StackPanel
@@ -37,19 +37,20 @@
                                  Margin="10"
                                  Content="Check"
                                  Width="55"
-                                 Click="Check_Click"/>
+                                 Command="{Binding Check}"/>
             </StackPanel>
             <StackPanel
                 Orientation="Horizontal"
                 Margin="10">
                 <dxe:SpinEdit x:Name="KillCount"
                               Margin="10" 
+                              Value="{Binding KillCount, Mode=TwoWay}"
                               Width="95" EditValue="1" MinValue="1" MaxValue="50"/>
                 <dx:SimpleButton x:Name="Kill" 
                                  Margin="10"
                                  Content="Kill"
                                  Width="55" 
-                                 Click="Kill_Click"/>
+                                 Command="{Binding Kill}"/>
             </StackPanel>
             <StackPanel 
                 Orientation="Horizontal"
@@ -60,14 +61,14 @@
                                  Content="Get Pod List"
                                  Height="25"
                                  Width="120" 
-                                 Click="Get_Pod_List_Click"/>
+                                 Command="{Binding GetPodList}"/>
                 <dx:SimpleButton x:Name="Clean"
                                  HorizontalAlignment="Right"
                                  Margin="10" 
                                  Content="X"
                                  Height="25"
                                  Width="30" 
-                                 Click="Clean_OnClick"/>
+                                 Command="{Binding Clean}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="OutputParent"
@@ -77,6 +78,7 @@
                     Height="200">
             <dxe:ListBoxEdit x:Name="Output"
                              MaxHeight="{Binding Height, ElementName=OutputParent}"
+                             ItemsSource="{Binding Output, Mode=TwoWay}"
                              VerticalAlignment="Stretch"
                              HorizontalAlignment="Stretch"
                              ScrollViewer.VerticalScrollBarVisibility="Visible"/>
